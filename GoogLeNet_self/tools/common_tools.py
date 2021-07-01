@@ -23,6 +23,7 @@ def get_vgg16(device, vis_model=False):
     # model = models.vgg16()
     # pretrained_state_dict = torch.load(path_state_dict)
     # model.load_state_dict(pretrained_state_dict)
+    # remember to add aux_logits=True. Or there will be no additional aux_logits in the model.
     model = torch.hub.load('pytorch/vision:v0.9.0', 'googlenet', pretrained=True, aux_logits=True)
     model.eval()
 
