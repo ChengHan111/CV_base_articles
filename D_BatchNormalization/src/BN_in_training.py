@@ -26,7 +26,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 if __name__ == "__main__":
 
     # config
-    data_dir = os.path.join(BASE_DIR, "..", "..", "Data", "NCFM", "train")
+    data_dir = os.path.join(r"C:\Users\hanch\PycharmProjects\cv_paper\data\NCFM-train\train")
     # path_state_dict = os.path.join(BASE_DIR, "..", "data", "googlenet-1378be20.pth")
     path_state_dict = os.path.join(r"C:\Users\hanch\PycharmProjects\cv_paper\C_GoogLeNet\data\googlenet-1378be20.pth")
     # path_state_dict = False
@@ -123,7 +123,7 @@ if __name__ == "__main__":
             loss.backward()
 
             # 3. update weights
-            optimizer.step()
+            optimizer.step() # 训练阶段在反向传播的时候才进行weight和bias的update,在运行这一步之前googlenet bn中的weight和bias都是不变的
 
             # 统计分类情况
             _, predicted = torch.max(outputs[0].data, 1)
@@ -147,6 +147,7 @@ if __name__ == "__main__":
             correct_val = 0.
             total_val = 0.
             loss_val = 0.
+            # 在测试状态时,BN参数不进行更新
             googlenet_model.eval()
             with torch.no_grad():
                 for j, data in enumerate(valid_loader):
