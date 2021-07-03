@@ -15,7 +15,7 @@ import torch
 import torchvision.transforms as transforms
 from PIL import Image
 from matplotlib import pyplot as plt
-from lesson.E_GoogLeNet_v3.tools.common_tools import get_googlenet_v3
+from E_GoogLeNet_v3.tools.common_tools import get_googlenet_v3
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -76,8 +76,8 @@ if __name__ == "__main__":
 
     # config
     path_state_dict = os.path.join(BASE_DIR, "..", "data", "inception_v3_google-1a9a5a14.pth")
-    # path_img = os.path.join(BASE_DIR, "..", "data","Golden Retriever from baidu.jpg")
-    path_img = os.path.join(BASE_DIR, "..", "data", "tiger cat.jpg")
+    path_img = os.path.join(BASE_DIR, "..", "data","Golden Retriever from baidu.jpg")
+    # path_img = os.path.join(BASE_DIR, "..", "data", "tiger cat.jpg")
     path_classnames = os.path.join(BASE_DIR, "..", "data", "imagenet1000.json")
     path_classnames_cn = os.path.join(BASE_DIR, "..", "data", "imagenet_classnames.txt")
 
@@ -94,6 +94,7 @@ if __name__ == "__main__":
     with torch.no_grad():
         time_tic = time.time()
         outputs = googlenet_v3_model(img_tensor)
+        # print(outputs) 1x1000 for 1000 classes classification
         time_toc = time.time()
 
     # 4/5 index to class names
