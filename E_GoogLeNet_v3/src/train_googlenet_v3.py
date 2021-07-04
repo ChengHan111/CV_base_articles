@@ -15,8 +15,8 @@ import torchvision.transforms as transforms
 import torch.optim as optim
 from matplotlib import pyplot as plt
 import torchvision.models as models
-from lesson.C_GoogLeNet.tools.my_dataset import NCFMDataSet
-from lesson.E_GoogLeNet_v3.tools.common_tools import get_googlenet_v3, LabelSmoothingCrossEntropy
+from C_GoogLeNet.tools.my_dataset import NCFMDataSet
+from E_GoogLeNet_v3.tools.common_tools import get_googlenet_v3, LabelSmoothingCrossEntropy
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

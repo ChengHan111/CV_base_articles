@@ -25,7 +25,7 @@ def get_googlenet_v3(path_state_dict, device, vis_model=False):
     if path_state_dict:
         pretrained_state_dict = torch.load(path_state_dict)
         model.load_state_dict(pretrained_state_dict)
-    model.eval()
+    model.eval() # inference中使用。不是用来训练的，因此使用eval()
 
     if vis_model:
         from torchsummary import summary
